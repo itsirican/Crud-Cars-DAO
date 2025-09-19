@@ -21,20 +21,44 @@ class CarController extends BaseController {
     static::view("list", $cars);
   }
 
-  function createAction() {
-
+  public static function createAction() {
+    static::view("create");
   }
 
-  function storeAction() {
-
+  public static function storeAction() {
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+      $created = static::getModel()
+      ->setModel($_POST['model'])
+      ->setPrice($_POST['price'])
+      ->create();
+      if ($created === true) {
+        static::redirect("list");
+      } else {
+        echo "Error";
+      }
+    }
   }
 
-  function editAction() {
-
+  public static function editAction() {
+    // var_dump($_GET);
+    $data = static::getModel()::view($_GET['id']);
+    static::view("edit", $data);
   }
 
-  function updateAction() {
-
+  public static function updateAction() {
+    // var_dump($_POST["model"]);
+    // var_dump($_POST["price"]);
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+      $updated = static::getModel()
+      ->setModel($_POST['model'])
+      ->setPrice($_POST['price'])
+      ->update($_POST["id"]);
+      if ($updated === true) {
+        static::redirect("list");
+      } else {
+        echo "Error";
+      }
+    }
   }
 
   function deleteAction() {

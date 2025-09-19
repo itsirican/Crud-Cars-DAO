@@ -14,8 +14,8 @@ ob_start();
 
     </thead>
     <tbody>
-      <?php /** @var app\models\Car[] $cars */ ?>
-      <?php foreach ($cars as $car): ?>
+      <?php /** @var app\models\Car[] $data */ ?>
+      <?php foreach ($data as $car): ?>
           <tr>
               <td><?= $car->getId() ?></td>
               <td><?= $car->getModel() ?></td>

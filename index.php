@@ -10,6 +10,18 @@ if (isset($_GET["action"])) {
     case "list":
       CarController::indexAction();
       break;
+    case "create":
+      CarController::createAction();
+      break;
+    case "store":
+      CarController::storeAction();
+      break;
+    case "edit":
+      CarController::editAction();
+      break;
+    case "update":
+      CarController::updateAction();
+      break;
     default:
       echo "Page not found 404";
       break;
