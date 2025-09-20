@@ -29,4 +29,6 @@ if (isset($_GET["action"])) {
       echo "Page not found 404";
       break;
   }
+} else {
+  CarController::indexAction();
 }

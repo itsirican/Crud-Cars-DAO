@@ -22,7 +22,7 @@ ob_start();
               <td><?= $car->getPrice() ?>$</td>
               <td>
                   <a href="index.php?action=edit&id=<?php echo $car->getId()?>" class="btn btn-success btn-sm">Edit</a>
-                  <a href="index.php?action=delete&id=<?php echo $car->getId()?>" class="btn btn-danger btn-sm">Delete</a>
+                  <a onclick="return confirm('Are you sure, you want to delete the car <?=$car->getModel(); ?>')" href="index.php?action=delete&id=<?php echo $car->getId()?>" class="btn btn-danger btn-sm">Delete</a>
               </td>
           </tr>
       <?php endforeach; ?>
