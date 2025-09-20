@@ -22,6 +22,9 @@ if (isset($_GET["action"])) {
     case "update":
       CarController::updateAction();
       break;
+    case "delete":
+      CarController::deleteAction();
+      break;
     default:
       echo "Page not found 404";
       break;

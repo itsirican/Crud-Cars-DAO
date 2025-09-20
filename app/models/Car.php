@@ -38,9 +38,15 @@ class Car extends Model {
     ->query("SELECT * FROM car WHERE id = $id")
     ->fetchAll(PDO::FETCH_CLASS, __CLASS__));
   }
+
   public function update($id) {
     $reqState = static::database()->prepare("UPDATE car SET model = ?, price = ? WHERE id = ?");
     return $reqState->execute([$this->model, $this->price, $id]);
+  }
+
+  public function destroy($id) {
+    $reqState = static::database()->prepare("DELETE FROM car WHERE id = ?");
+    return $reqState->execute([$id]);
   }
   
 }

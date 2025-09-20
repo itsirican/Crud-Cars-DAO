@@ -14,7 +14,17 @@ class CarController extends BaseController {
       static::$model = new Car();
     }
     return static::$model;
-  } 
+  }
+
+  // protected static $models = [];
+
+  // protected function loadModel($modelName) {
+  //     if (!isset(self::$models[$modelName])) {
+  //         $class = "app\\models\\$modelName";
+  //         self::$models[$modelName] = new $class();
+  //     }
+  //     return self::$models[$modelName];
+  // }
 
   public static function indexAction() {
     $cars = static::getModel()->latest();
@@ -61,7 +71,8 @@ class CarController extends BaseController {
     }
   }
 
-  function deleteAction() {
-
+  public static function deleteAction() {
+    static::getModel()->destroy($_GET["id"]);
+    static::redirect("list");
   }
 }
